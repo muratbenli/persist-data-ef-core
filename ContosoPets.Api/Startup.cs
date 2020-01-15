@@ -37,7 +37,8 @@ namespace ContosoPets.Api {
             builder.Password = "123"; //contosoPetsCredentials["Password"];
 
             services.AddDbContext<ContosoPetsContext> (options =>
-                options.UseSqlServer (builder.ConnectionString));
+                options.UseSqlServer (builder.ConnectionString)
+                .EnableSensitiveDataLogging (Configuration.GetValue<bool> ("Logging:EnableSqlParameterLogging")));
 
             services.AddControllers ();
         }
