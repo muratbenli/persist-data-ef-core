@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ContosoPets.DataAccess.Data;
+using ContosoPets.DataAccess.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,12 +26,14 @@ namespace ContosoPets.Api {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices (IServiceCollection services) {
 
+            services.AddScoped<OrderService> ();
+
             var builder = new SqlConnectionStringBuilder (
                 Configuration.GetConnectionString ("ContosoPets"));
             //IConfigurationSection contosoPetsCredentials =
-              //  Configuration.GetSection ("ContosoPetsCredentials");
+            //  Configuration.GetSection ("ContosoPetsCredentials");
 
-            builder.UserID = "sa";//contosoPetsCredentials["UserId"];
+            builder.UserID = "sa"; //contosoPetsCredentials["UserId"];
             builder.Password = "Password*1"; //contosoPetsCredentials["Password"];
 
             services.AddDbContext<ContosoPetsContext> (options =>
