@@ -34,7 +34,7 @@ namespace ContosoPets.Api {
             //  Configuration.GetSection ("ContosoPetsCredentials");
 
             builder.UserID = "sa"; //contosoPetsCredentials["UserId"];
-            builder.Password = "Password*1"; //contosoPetsCredentials["Password"];
+            builder.Password = "123"; //contosoPetsCredentials["Password"];
 
             services.AddDbContext<ContosoPetsContext> (options =>
                 options.UseSqlServer (builder.ConnectionString));
