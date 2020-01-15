@@ -1,0 +1,8 @@
+C:\Users\murat benli\Desktop\persistData\ContosoPets.Domain\bin\Debug\netstandard2.0\ContosoPets.Domain.deps.json
+C:\Users\murat benli\Desktop\persistData\ContosoPets.Domain\bin\Debug\netstandard2.0\ContosoPets.Domain.dll
+C:\Users\murat benli\Desktop\persistData\ContosoPets.Domain\bin\Debug\netstandard2.0\ContosoPets.Domain.pdb
+C:\Users\murat benli\Desktop\persistData\ContosoPets.Domain\obj\Debug\netstandard2.0\ContosoPets.Domain.csprojAssemblyReference.cache
+C:\Users\murat benli\Desktop\persistData\ContosoPets.Domain\obj\Debug\netstandard2.0\ContosoPets.Domain.AssemblyInfoInputs.cache
+C:\Users\murat benli\Desktop\persistData\ContosoPets.Domain\obj\Debug\netstandard2.0\ContosoPets.Domain.AssemblyInfo.cs
+C:\Users\murat benli\Desktop\persistData\ContosoPets.Domain\obj\Debug\netstandard2.0\ContosoPets.Domain.dll
+C:\Users\murat benli\Desktop\persistData\ContosoPets.Domain\obj\Debug\netstandard2.0\ContosoPets.Domain.pdb
