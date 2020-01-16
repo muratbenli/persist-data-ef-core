@@ -1,0 +1,118 @@
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://localhost:5000
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: https://localhost:5001
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\murat benli\Desktop\persistData\ContosoPets.Api
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:5001/Orders  
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'ContosoPets.Api.Controllers.OrdersController.Get (ContosoPets.Api)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+      Route matched with {action = "Get", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[ContosoPets.Domain.DataTransferObjects.CustomerOrder]]] Get() on controller ContosoPets.Api.Controllers.OrdersController (ContosoPets.Api).
+warn: Microsoft.EntityFrameworkCore.Model.Validation[10400]
+      Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 3.1.0 initialized 'ContosoPetsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (168ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [o].[Id], [c].[LastName], [c].[FirstName], CASE
+          WHEN [o].[OrderFulfilled] IS NOT NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [o].[OrderFulfilled], [o].[OrderPlaced], [c].[Id], [t].[Quantity], [t].[Name], [t].[Id], [t].[Id0]
+      FROM [Orders] AS [o]
+      INNER JOIN [Customers] AS [c] ON [o].[CustomerId] = [c].[Id]
+      LEFT JOIN (
+          SELECT [p].[Quantity], [p0].[Name], [p].[Id], [p0].[Id] AS [Id0], [p].[OrderId]
+          FROM [ProductOrders] AS [p]
+          INNER JOIN [Products] AS [p0] ON [p].[ProductId] = [p0].[Id]
+      ) AS [t] ON [o].[Id] = [t].[OrderId]
+      ORDER BY [o].[OrderPlaced] DESC, [o].[Id], [c].[Id], [t].[Id], [t].[Id0]
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[ContosoPets.Domain.DataTransferObjects.CustomerOrder, ContosoPets.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+      Executed action ContosoPets.Api.Controllers.OrdersController.Get (ContosoPets.Api) in 3284.0692ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'ContosoPets.Api.Controllers.OrdersController.Get (ContosoPets.Api)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 4016.7162ms 200 application/json; charset=utf-8
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:5001/Orders/2  
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'ContosoPets.Api.Controllers.OrdersController.GetById (ContosoPets.Api)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+      Route matched with {action = "GetById", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[ContosoPets.Domain.DataTransferObjects.CustomerOrder]] GetById(Int32) on controller ContosoPets.Api.Controllers.OrdersController (ContosoPets.Api).
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 3.1.0 initialized 'ContosoPetsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (96ms) [Parameters=[@__id_0='2'], CommandType='Text', CommandTimeout='30']
+      -- GetOrderById
+      
+      -- GetById
+      
+      SELECT [t].[Id], [t].[LastName], [t].[FirstName], [t].[c], [t].[OrderFulfilled], [t].[OrderPlaced], [t].[Id0], [t0].[Quantity], [t0].[Name], [t0].[Id], [t0].[Id0]
+      FROM (
+          SELECT TOP(1) [o].[Id], [c].[LastName], [c].[FirstName], CASE
+              WHEN [o].[OrderFulfilled] IS NOT NULL THEN CAST(1 AS bit)
+              ELSE CAST(0 AS bit)
+          END AS [c], [o].[OrderFulfilled], [o].[OrderPlaced], [c].[Id] AS [Id0]
+          FROM [Orders] AS [o]
+          INNER JOIN [Customers] AS [c] ON [o].[CustomerId] = [c].[Id]
+          WHERE [o].[Id] = @__id_0
+      ) AS [t]
+      LEFT JOIN (
+          SELECT [p].[Quantity], [p0].[Name], [p].[Id], [p0].[Id] AS [Id0], [p].[OrderId]
+          FROM [ProductOrders] AS [p]
+          INNER JOIN [Products] AS [p0] ON [p].[ProductId] = [p0].[Id]
+      ) AS [t0] ON [t].[Id] = [t0].[OrderId]
+      ORDER BY [t].[Id], [t].[Id0], [t0].[Id], [t0].[Id0]
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing ObjectResult, writing value of type 'null'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+      Executed action ContosoPets.Api.Controllers.OrdersController.GetById (ContosoPets.Api) in 391.6862ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'ContosoPets.Api.Controllers.OrdersController.GetById (ContosoPets.Api)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 436.9835ms 204 
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:5001/Orders/3  
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'ContosoPets.Api.Controllers.OrdersController.GetById (ContosoPets.Api)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+      Route matched with {action = "GetById", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[ContosoPets.Domain.DataTransferObjects.CustomerOrder]] GetById(Int32) on controller ContosoPets.Api.Controllers.OrdersController (ContosoPets.Api).
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 3.1.0 initialized 'ContosoPetsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__id_0='3'], CommandType='Text', CommandTimeout='30']
+      -- GetOrderById
+      
+      -- GetById
+      
+      SELECT [t].[Id], [t].[LastName], [t].[FirstName], [t].[c], [t].[OrderFulfilled], [t].[OrderPlaced], [t].[Id0], [t0].[Quantity], [t0].[Name], [t0].[Id], [t0].[Id0]
+      FROM (
+          SELECT TOP(1) [o].[Id], [c].[LastName], [c].[FirstName], CASE
+              WHEN [o].[OrderFulfilled] IS NOT NULL THEN CAST(1 AS bit)
+              ELSE CAST(0 AS bit)
+          END AS [c], [o].[OrderFulfilled], [o].[OrderPlaced], [c].[Id] AS [Id0]
+          FROM [Orders] AS [o]
+          INNER JOIN [Customers] AS [c] ON [o].[CustomerId] = [c].[Id]
+          WHERE [o].[Id] = @__id_0
+      ) AS [t]
+      LEFT JOIN (
+          SELECT [p].[Quantity], [p0].[Name], [p].[Id], [p0].[Id] AS [Id0], [p].[OrderId]
+          FROM [ProductOrders] AS [p]
+          INNER JOIN [Products] AS [p0] ON [p].[ProductId] = [p0].[Id]
+      ) AS [t0] ON [t].[Id] = [t0].[OrderId]
+      ORDER BY [t].[Id], [t].[Id0], [t0].[Id], [t0].[Id0]
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing ObjectResult, writing value of type 'ContosoPets.Domain.DataTransferObjects.CustomerOrder'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+      Executed action ContosoPets.Api.Controllers.OrdersController.GetById (ContosoPets.Api) in 26.065ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'ContosoPets.Api.Controllers.OrdersController.GetById (ContosoPets.Api)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 28.1533ms 200 application/json; charset=utf-8

@@ -37,9 +37,10 @@ namespace ContosoPets.DataAccess.Services {
         }
 
         // Add the GetById code
-
         private IQueryable<Order> GetOrderById (int id) =>
-            _context.Orders.AsNoTracking ().Where (o => o.Id == id);
+            _context.Orders.AsNoTracking ()
+            .TagWith (nameof (GetOrderById))
+            .Where (o => o.Id == id);
 
         public async Task<CustomerOrder> GetById (int id) {
             CustomerOrder order = await GetOrderById (id)
@@ -53,7 +54,9 @@ namespace ContosoPets.DataAccess.Services {
                             ProductQuantity = po.Quantity,
                                 ProductName = po.Product.Name
                         }))
-                }).FirstOrDefaultAsync ();
+                })
+                .TagWith(nameof(GetById))
+                .FirstOrDefaultAsync ();
 
             return order;
         }
